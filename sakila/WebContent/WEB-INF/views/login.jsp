@@ -31,12 +31,12 @@
 <body>
 	<div class="container ">
 
-		<div class ="text-right">오늘 접속자 수 : ${stats.cnt}</div>
-		<div class ="text-right">총 접속자 수 : ${totalCount}</div>
+		<div class ="text-right text-secondary">오늘 접속자 수 : ${stats.cnt}</div>
+		<div class ="text-right text-secondary">총 접속자 수 : ${totalCount}</div>
 		<form method="post" id="loginForm" action="">
 			<table class="table table-borderless text-center ">
 				<tr>
-					<td><img class="rounded-circle" width="400px" height="200px" src="./images/login.PNG"></td>
+					<td><img class=" mx-auto  img-thumbnail rounded-circle" width="400px" height="200px" src="./images/login.PNG"></td>
 				</tr>
 				<tr>
 					<td><input type="text" id="ID" placeholder="ID" ></td>
