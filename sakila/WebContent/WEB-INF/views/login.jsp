@@ -36,7 +36,7 @@
 		<form method="post" id="loginForm" action="">
 			<table class="table table-borderless text-center ">
 				<tr>
-					<td><img class=" mx-auto  img-thumbnail rounded-circle" width="400px" height="200px" src="./images/login.PNG"></td>
+					<td><img class=" mx-auto  img-thumbnail rounded-circle"  src="./images/login.PNG"></td>
 				</tr>
 				<tr>
 					<td><input type="text" id="id" placeholder="ID" ></td>
