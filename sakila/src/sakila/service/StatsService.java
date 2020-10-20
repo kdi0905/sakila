@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import sakila.dao.StatsDao;
+import sakila.dbUtil.DBUtil;
 import sakila.vo.Stats;
 
 
@@ -29,13 +30,11 @@ public class StatsService {
 		Map<String,Object> map = new HashMap<String, Object>(); // 동시 리턴하는 map 생성
 		Stats returnStats =null;
 		statsDao = new StatsDao();
-		final String URL="jdbc:mariadb://localhost:3306/sakila";
-		final String USER ="root";
-		final String PASSWORD="java1004";
 		long totalCount;
 		Connection conn=null;
 		try {
-			conn= DriverManager.getConnection(URL,USER,PASSWORD);
+			DBUtil dbUtil = new DBUtil();
+			conn= dbUtil.selectDB();
 			conn.setAutoCommit(false);
 			Stats stats= this.getToday(); //현재 시간을 stats에 넣는다.
 			 returnStats = statsDao.selectDay(conn, stats); //현재 날짜가 있는지 찾는다.
@@ -66,12 +65,11 @@ public class StatsService {
 	}
 	public void countStats() {
 		statsDao = new StatsDao();
-		final String URL="jdbc:mariadb://localhost:3306/sakila";
-		final String USER ="root";
-		final String PASSWORD="java1004";
-		Connection conn=null;
+		Connection conn =null;
+		
 		try {
-			conn= DriverManager.getConnection(URL,USER,PASSWORD);
+			DBUtil dbUtil = new DBUtil();
+			conn= dbUtil.selectDB();
 			conn.setAutoCommit(false);
 			
 			//오늘 날짜 구해서 있는지 확인한다음 수정할건지 추가할건지 확인
