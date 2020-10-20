@@ -31,8 +31,8 @@
 <body>
 	<div class="container ">
 
-		<div>오늘 접속자 수:${stats.count}</div>
-		
+		<div class ="text-right">오늘 접속자 수 : ${stats.cnt}</div>
+		<div class ="text-right">총 접속자 수 : ${totalCount}</div>
 		<form method="post" id="loginForm" action="">
 			<table class="table table-borderless text-center ">
 				<tr>

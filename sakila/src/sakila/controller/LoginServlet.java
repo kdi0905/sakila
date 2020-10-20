@@ -1,6 +1,7 @@
 package sakila.controller;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,8 +25,16 @@ public class LoginServlet extends HttpServlet {
 			return;
 		}
 		statsService = new StatsService();
-		Stats stats = statsService.getStats(); //현재 날짜의 count수를 찾아 stats에 넣는다.
-		request.setAttribute("stats", stats);
+		
+		Map<String,Object> map = statsService.getStats(); //현재 날짜의 count수를 찾아 stats에 넣는다.
+		
+		//map 풀기
+		Stats stats=(Stats)map.get("returnStats");  // map에 있는 returnStats를  강제 형변환해서 stats메서드의 cnt에 넣는다.
+		System.out.println(stats.getCnt()+"<----selvlet(map stats 현재 방문자수)");
+		long totalCount = (long)map.get("totalCount");
+		System.out.println(totalCount+"<----selvlet(map totalcount  총방문자수)");
+		request.setAttribute("stats",stats);
+		request.setAttribute("totalCount", totalCount);
 		request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
 	}
 	//로그인액션
