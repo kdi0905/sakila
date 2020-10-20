@@ -16,10 +16,10 @@
 <script>
 	$(document).ready(function() {
 		$("#btn").click(function() {
-			if ($("#id").val() == "ID") {
+			if ($("#id").val() == "") {
 				alert("아이디를 입력해주세요");
 				return;
-			} else if ($("pw").val() == "PW") {
+			} else if ($("#pw").val() == "") {
 				alert("비밀번호를 입력해주세요");
 				return;
 			}
@@ -39,10 +39,10 @@
 					<td><img class=" mx-auto  img-thumbnail rounded-circle" width="400px" height="200px" src="./images/login.PNG"></td>
 				</tr>
 				<tr>
-					<td><input type="text" id="ID" placeholder="ID" ></td>
+					<td><input type="text" id="id" placeholder="ID" ></td>
 				</tr>
 				<tr>
-					<td><input type="password" id="ID" placeholder="PW" ></td>
+					<td><input type="password" id="pw" placeholder="PW" ></td>
 				</tr>
 				<tr>
 					<td>
