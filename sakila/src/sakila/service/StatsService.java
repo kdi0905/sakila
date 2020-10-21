@@ -18,10 +18,11 @@ public class StatsService {
 	//현재 날짜 구하기
 	private Stats getToday() {
 		Calendar today = Calendar.getInstance(); //날짜 구하기
-		SimpleDateFormat formater = new SimpleDateFormat("YYYY-MM-DD"); //형식 초기화
+		SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd"); //형식 초기화
 		String day= formater.format(today.getTime()); //day변수에 날짜 넣기
 		Stats stats = new Stats();
 		stats.setDay(day);
+		System.out.println(stats.getDay()+" <-----service(getToday())");
 		return stats; //현재 날짜 리턴
 	}
 	
@@ -68,7 +69,7 @@ public class StatsService {
 	public void countStats() {
 		statsDao = new StatsDao();
 		Connection conn =null;
-		
+		System.out.println("countStats start");
 		try {
 			DBUtil dbUtil = new DBUtil();
 			conn= dbUtil.selectDB();
@@ -76,10 +77,12 @@ public class StatsService {
 			
 			//오늘 날짜 구해서 있는지 확인한다음 수정할건지 추가할건지 확인
 			Stats stats= this.getToday();
-			
+			System.out.println(stats.getDay()+"<---Service(countStats)");
 			if(statsDao.selectDay(conn, stats)==null) { //현재 날짜 있는지 확인
+				System.out.println("Service(insertStats 실행)");
 				statsDao.insertStats(conn, stats); // 현재 날짜가 없으면 추가 실행
 			} else {
+				System.out.println("Service(updateStats 실행)");
 				statsDao.updateStats(conn,stats); // 현재 날짜가 있으면 업데이트실행
 			}
 			conn.commit();

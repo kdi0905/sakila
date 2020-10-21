@@ -19,7 +19,9 @@ public class StatsListener implements HttpSessionListener {
          if(se.getSession().isNew()) { //session을 받고 처음으로 일어난 session인지 기존이 있던session인지 확인
         	 	//새로운 session이 발생할 때 
         	 statsService = new StatsService();
+        	 System.out.println("StatsListener(countStats())실행");
         	 statsService.countStats();
+        
          }
     }
 

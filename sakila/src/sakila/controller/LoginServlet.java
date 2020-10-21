@@ -4,11 +4,13 @@ import java.io.IOException;
 import java.util.Map;
 
 import javax.servlet.ServletException;
+import javax.servlet.SessionTrackingMode;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import sakila.service.StaffService;
 import sakila.service.StatsService;
@@ -42,20 +44,40 @@ public class LoginServlet extends HttpServlet {
 	}
 	//로그인액션
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println();
+		System.out.println("servlet doPost시작");
+		
 		staffService = new StaffService();
+		HttpSession session = request.getSession();
 		Staff staff= new Staff();
-		//request.getparameter
+		//로그인 페이지의 값 받아오기
+		String staffEmail = request.getParameter("id");
+		String staffPW = request.getParameter("pw");
+		System.out.println(staffEmail+"<----입력한 이메일 확인");
+		
+		//staff 객체에 값 넣기
+		staff.setEmail(staffEmail);
+		staff.setPassword(staffPW);
+		
+		//service에 이메일 있는지 확인
 		Staff returnStaff= staffService.getStaffByKey(staff);
+		System.out.println(returnStaff+"<----retrunStaff의 값 확인");
+		
+		//있으면 로그인성공
 		if(returnStaff != null) {
-			//성공
-			//session 담고
+			System.out.println("로그인성공");
+			// session에 담기
+			session.setAttribute("loginEmail", staffEmail);
+			session.setAttribute("loginPw", staffPW);
 			//포워딩
+			request.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(request, response);
+			
 			return;
 		}
 			//실패
-		response.sendRedirect(request.getContextPath()+"/LoginServlet");	
-		
-		
+		System.out.println("로그인실패");
+		//다시 로그인 페이지 이동
+		response.sendRedirect(request.getContextPath()+"/LoginServlet");
 	}
 }
 

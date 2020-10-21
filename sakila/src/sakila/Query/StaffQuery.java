@@ -1,6 +1,7 @@
 package sakila.Query;
 
 public class StaffQuery {
-	public final static String SELECT_STAFF_BY_KEY
-	="SELECT staff_id, username FROM staff WHERE staff_id=? AND password=?";
+	//로그인 확인
+	public final static String SELECT_STAFF_BY_KEY 
+	="SELECT staff_id, username FROM staff WHERE email=? AND password=PASSWORD(?)";
 }

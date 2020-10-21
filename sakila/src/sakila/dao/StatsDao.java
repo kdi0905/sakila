@@ -15,16 +15,19 @@ public class StatsDao {
 		//SELECT day,cnt  FROM stats WHERE day=? 
 		stmt.setString(1,stats.getDay());
 		ResultSet rs= stmt.executeQuery();
-		if(rs.next()) {
-			
+		System.out.println(stmt+"<----dao(selectDay)");
+		System.out.println(stats.getDay()+"<----dao(getDay )있는지 확인");
+		if(rs.next()){
+			System.out.println("rs에 값이 있다.");
 			returnStats=new Stats();
 			returnStats.setDay(rs.getString("day"));
 			returnStats.setCnt(rs.getLong("cnt"));
-			
 		}
+		
 		System.out.println(returnStats.getDay() + "<---dao(select Day)");
 		System.out.println(returnStats.getCnt()+"<---dao(select Count)");
 		return returnStats;
+		
 	}
 	//총 방문자 수 구하기
 	 public long totalCount(Connection conn)throws Exception{

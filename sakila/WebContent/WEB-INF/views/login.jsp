@@ -33,16 +33,16 @@
 
 		<div class ="text-right text-secondary">오늘 접속자 수 : ${stats.cnt}</div>
 		<div class ="text-right text-secondary">총 접속자 수 : ${totalCount}</div>
-		<form method="post" id="loginForm" action="${request.ContextPath }/LoginServlet">
+		<form method="post" id="loginForm">
 			<table class="table table-borderless text-center ">
 				<tr>
 					<td><img class=" mx-auto  img-thumbnail rounded-circle"  src="./images/login.PNG"></td>
 				</tr>
 				<tr>
-					<td><input type="text" id="id" placeholder="ID" ></td>
+					<td><input type="text" id="id" placeholder="ID" name="id" ></td>
 				</tr>
 				<tr>
-					<td><input type="password" id="pw" placeholder="PW" ></td>
+					<td><input type="password" id="pw" placeholder="PW" name="pw"></td>
 				</tr>
 				<tr>
 					<td>

@@ -2,6 +2,7 @@ package sakila.vo;
 
 import java.sql.Blob;
 
+//Staff의 필드 목록
 public class Staff {
 	//11개의 필드(속성, 멤버변수)
 	private int staffId;
@@ -38,12 +39,12 @@ public class Staff {
 	public void setAddressId(int addressId) {
 		this.addressId = addressId;
 	}
-	public Blob getPicture() {
+	/*public Blob getPicture() {
 		return picture;
 	}
 	public void setPicture(Blob picture) {
 		this.picture = picture;
-	}
+	}*/
 	public String getEmail() {
 		return email;
 	}
