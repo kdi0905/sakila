@@ -8,6 +8,7 @@ public class StaffDao {
 	public Staff selectStaffByKey(Connection conn,Staff staff)throws Exception {
 		Staff returnStaff =null;
 		/*password(?)*/
+	
 		return returnStaff;
 	}
 }
