@@ -9,7 +9,7 @@ public class Staff {
 	private String firstName;
 	private String lastName;
 	private int addressId;
-	private Blob picture;
+	private String picture;
 	private String email;
 	private int storeId;
 	private int active;
@@ -39,10 +39,10 @@ public class Staff {
 	public void setAddressId(int addressId) {
 		this.addressId = addressId;
 	}
-	public Blob getPicture() {
+	public String getPicture() {
 		return picture;
 	}
-	public void setPicture(Blob picture) {
+	public void setPicture(String picture) {
 		this.picture = picture;
 	}
 	public String getEmail() {
