@@ -39,12 +39,12 @@ public class Staff {
 	public void setAddressId(int addressId) {
 		this.addressId = addressId;
 	}
-	/*public Blob getPicture() {
+	public Blob getPicture() {
 		return picture;
 	}
 	public void setPicture(Blob picture) {
 		this.picture = picture;
-	}*/
+	}
 	public String getEmail() {
 		return email;
 	}
