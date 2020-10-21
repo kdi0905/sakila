@@ -10,13 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import sakila.service.StaffService;
 import sakila.service.StatsService;
+import sakila.vo.Staff;
 import sakila.vo.Stats;
 //실행순서listener->filter-> servlet->service->dao
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	//로그인한 사람 구하기
 	private StatsService statsService;
+	private StaffService staffService;
 	//로그인폼
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -39,7 +42,20 @@ public class LoginServlet extends HttpServlet {
 	}
 	//로그인액션
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		staffService = new StaffService();
+		Staff staff= new Staff();
+		//request.getparameter
+		Staff returnStaff= staffService.getStaffByKey(staff);
+		if(returnStaff != null) {
+			//성공
+			//session 담고
+			//포워딩
+			return;
+		}
+			//실패
+		response.sendRedirect(request.getContextPath()+"/LoginServlet");	
+		
+		
 	}
 }
 

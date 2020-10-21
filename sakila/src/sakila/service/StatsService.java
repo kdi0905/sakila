@@ -63,6 +63,8 @@ public class StatsService {
 		return map;
 		
 	}
+	
+	//현재 날짜 확인해서 추가하거나 수정하는 메서드
 	public void countStats() {
 		statsDao = new StatsDao();
 		Connection conn =null;
