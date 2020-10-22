@@ -31,8 +31,6 @@ public class StatsDao {
 			System.out.println(returnStats.getCnt()+"<---dao(select Count)");
 		}
 		
-		
-		
 		return returnStats;
 		
 	}

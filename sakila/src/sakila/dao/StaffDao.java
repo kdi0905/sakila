@@ -12,10 +12,10 @@ public class StaffDao {
 		Staff returnStaff =null;
 		/*password(?)*/
 		PreparedStatement stmt = conn.prepareStatement(StaffQuery.SELECT_STAFF_BY_KEY);
-		//SELECT staff_id, username FROM staff WHERE email=? AND password=PASSWORD(?);
+		//SELECT staff_id, username FROM staff WHERE staff_id=? AND password=PASSWORD(?);
 		System.out.println(stmt+" <---stmt");
-		stmt.setString(1, staff.getEmail());
-		System.out.println(staff.getEmail()+" <---dao이메일확인");
+		stmt.setInt(1, staff.getStaffId());
+		System.out.println(staff.getStaffId()+" <---da아이디확인");
 		stmt.setString(2, staff.getPassword());
 		System.out.println(staff.getPassword()+" <----dao비밀번호확인");
 		ResultSet rs = stmt.executeQuery();
