@@ -52,12 +52,12 @@ public class LoginServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		Staff staff= new Staff();
 		//로그인 페이지의 값 받아오기
-		int staffId = Integer.parseInt(request.getParameter("id"));
+		String staffEmail = request.getParameter("id");
 		String staffPW = request.getParameter("pw");
-		System.out.println(staffId+"<----입력한 아이디 확인");
+		System.out.println(staffEmail+"<----입력한 이메일 확인");
 		
 		//staff 객체에 값 넣기
-		staff.setStaffId(staffId);
+		staff.setEmail(staffEmail);
 		staff.setPassword(staffPW);
 		
 		//service에 이메일 있는지 확인
@@ -68,7 +68,7 @@ public class LoginServlet extends HttpServlet {
 		if(returnStaff != null) {
 			System.out.println("로그인성공");
 			// session에 담기
-			session.setAttribute("loginStaff", staffId);
+			session.setAttribute("loginStaff", returnStaff.getStaffId());
 			//포워딩
 			response.sendRedirect(request.getContextPath()+"/auth/IndexServlet");
 			
