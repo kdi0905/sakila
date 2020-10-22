@@ -40,6 +40,7 @@ public class LoginServlet extends HttpServlet {
 		System.out.println(totalCount+"<----selvlet(map totalcount  총방문자수)");
 		request.setAttribute("stats",stats);
 		request.setAttribute("totalCount", totalCount);
+		
 		request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
 	}
 	//로그인액션

@@ -26,6 +26,45 @@ public class StatsService {
 		return stats; //현재 날짜 리턴
 	}
 	
+	//현재 날짜 확인해서 추가하거나 수정하는 메서드
+		public void countStats() {
+			statsDao = new StatsDao();
+			Connection conn =null;
+			System.out.println("countStats start");
+			try {
+				DBUtil dbUtil = new DBUtil();
+				conn= dbUtil.selectDB();
+				conn.setAutoCommit(false);
+				
+				//오늘 날짜 구해서 있는지 확인한다음 수정할건지 추가할건지 확인
+				Stats stats = this.getToday();
+				System.out.println(stats.getDay()+"<---Service(countStats)");
+				System.out.println(statsDao.selectDay(conn, stats));
+				if(statsDao.selectDay(conn, stats)==null) { //현재 날짜 있는지 확인
+					System.out.println("Service(insertStats 실행)");
+					statsDao.insertStats(conn, stats); // 현재 날짜가 없으면 추가 실행
+				}else {
+					System.out.println("Service(updateStats 실행)");
+					statsDao.updateStats(conn,stats); // 현재 날짜가 있으면 업데이트실행
+				}
+				conn.commit();
+			}catch(Exception e){
+				try {
+					conn.rollback();
+					
+				}catch(SQLException e1) {
+					e1.printStackTrace();
+				}
+				e.printStackTrace();
+			}finally {
+				try {
+					conn.close();
+				}catch(SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	
 	//현재 날짜 방문자수, 총 방문자수 구해서 Map사용해서 리턴하기
 	public Map<String, Object> getStats() { //날짜가 있는지 확인해서 Stats의 값을 리턴시켜준다. //public Map<String,Object>getStats()
 		Map<String,Object> map = new HashMap<String, Object>(); // 동시 리턴하는 map 생성
@@ -65,41 +104,5 @@ public class StatsService {
 		
 	}
 	
-	//현재 날짜 확인해서 추가하거나 수정하는 메서드
-	public void countStats() {
-		statsDao = new StatsDao();
-		Connection conn =null;
-		System.out.println("countStats start");
-		try {
-			DBUtil dbUtil = new DBUtil();
-			conn= dbUtil.selectDB();
-			conn.setAutoCommit(false);
-			
-			//오늘 날짜 구해서 있는지 확인한다음 수정할건지 추가할건지 확인
-			Stats stats= this.getToday();
-			System.out.println(stats.getDay()+"<---Service(countStats)");
-			if(statsDao.selectDay(conn, stats)==null) { //현재 날짜 있는지 확인
-				System.out.println("Service(insertStats 실행)");
-				statsDao.insertStats(conn, stats); // 현재 날짜가 없으면 추가 실행
-			} else {
-				System.out.println("Service(updateStats 실행)");
-				statsDao.updateStats(conn,stats); // 현재 날짜가 있으면 업데이트실행
-			}
-			conn.commit();
-		}catch(Exception e){
-			try {
-				conn.rollback();
-				
-			}catch(SQLException e1) {
-				e1.printStackTrace();
-			}
-			e.printStackTrace();
-		}finally {
-			try {
-				conn.close();
-			}catch(SQLException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+	
 }

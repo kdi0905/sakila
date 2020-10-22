@@ -9,23 +9,30 @@ import sakila.vo.Stats;
 
 public class StatsDao {
 	//오늘 접속 했는지 안했는지 확인 //없으면 =false  있으면= true
-	public Stats selectDay(Connection conn,Stats stats)throws Exception {
+	public Stats selectDay(Connection conn,Stats stats) throws Exception {
+		
+		System.out.println(stats.getDay());
+		System.out.println(stats.getCnt());
 		Stats returnStats=null;
-		PreparedStatement stmt =conn.prepareStatement(StatsQuery.SELECT_DAY);
+		PreparedStatement stmt = conn.prepareStatement(StatsQuery.SELECT_DAY);
 		//SELECT day,cnt  FROM stats WHERE day=? 
 		stmt.setString(1,stats.getDay());
 		ResultSet rs= stmt.executeQuery();
 		System.out.println(stmt+"<----dao(selectDay)");
 		System.out.println(stats.getDay()+"<----dao(getDay )있는지 확인");
-		if(rs.next()){
-			System.out.println("rs에 값이 있다.");
-			returnStats=new Stats();
+		System.out.println(returnStats+"<---dao(returnStats)");
+		
+		if(rs.next()) {
+			returnStats = new Stats();
+			System.out.println("Stats 객체 생성");
 			returnStats.setDay(rs.getString("day"));
+			System.out.println(returnStats.getDay() + "<---dao(select Day)");
 			returnStats.setCnt(rs.getLong("cnt"));
+			System.out.println(returnStats.getCnt()+"<---dao(select Count)");
 		}
 		
-		System.out.println(returnStats.getDay() + "<---dao(select Day)");
-		System.out.println(returnStats.getCnt()+"<---dao(select Count)");
+		
+		
 		return returnStats;
 		
 	}
