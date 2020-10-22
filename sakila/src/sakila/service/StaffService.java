@@ -28,6 +28,7 @@ public class StaffService {
 			
 			//dao에서 이메일 확인 작업 실행
 			returnStaff =staffDao.selectStaffByKey(conn, staff);
+			
 			conn.commit();
 		}catch(Exception e){
 			try {

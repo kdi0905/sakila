@@ -6,21 +6,25 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.catalina.Session;
 
 
-@WebServlet("/auth/IndexServlet")
-public class IndexServlet extends HttpServlet {
-	
-	//로그인 폼
+@WebServlet("/auth/LogoutServlet")
+public class LogoutServlet extends HttpServlet {
+
+  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("IndexServlet 접속 성공");
-		request.getRequestDispatcher("/WEB-INF/views/auth/index.jsp").forward(request, response);
-		
+		System.out.println("로그아웃 실행");
+		request.getSession().invalidate();
+		response.sendRedirect(request.getContextPath()+"/LoginServlet");
+
 	}
+
 	
-	//로그인 액션
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		
 	}
 
 }
