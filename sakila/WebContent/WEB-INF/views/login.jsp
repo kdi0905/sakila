@@ -39,10 +39,10 @@
 					<td><img class=" mx-auto  img-thumbnail rounded-circle"  src="${pageContext.request.contextPath }/images/login.PNG"></td>
 				</tr>
 				<tr>
-					<td><input type="text" id="id" placeholder="ID" name="id" ></td>
+					<td><input type="text" id="id" placeholder="ID" name="id" value="Mike.Hillyer@sakilastaff.com" ></td>
 				</tr>
 				<tr>
-					<td><input type="password" id="pw" placeholder="PW" name="pw"></td>
+					<td><input type="password" id="pw" placeholder="PW" name="pw" value="1234"></td>
 				</tr>
 				<tr>
 					<td>

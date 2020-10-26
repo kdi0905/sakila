@@ -78,7 +78,9 @@ public class StatsService {
 			conn.setAutoCommit(false);
 			Stats stats= this.getToday(); //현재 시간을 stats에 넣는다.
 			 returnStats = statsDao.selectDay(conn, stats); //현재 날짜가 있는지 찾는다.
+			 if(returnStats!=null) {
 			 System.out.println(returnStats.getCnt()+"<---Service(returnStats.getCnt()출력)");
+			 }
 			 totalCount= statsDao.totalCount(conn); // 총 방문자수 구하기
 			 System.out.println(totalCount+"<---Service(totalCount 총 방문자수 출력)");
 			 //map

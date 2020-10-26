@@ -10,9 +10,7 @@ import sakila.vo.Stats;
 public class StatsDao {
 	//오늘 접속 했는지 안했는지 확인 //없으면 =false  있으면= true
 	public Stats selectDay(Connection conn,Stats stats) throws Exception {
-		
-		System.out.println(stats.getDay());
-		System.out.println(stats.getCnt());
+
 		Stats returnStats=null;
 		PreparedStatement stmt = conn.prepareStatement(StatsQuery.SELECT_DAY);
 		//SELECT day,cnt  FROM stats WHERE day=? 
