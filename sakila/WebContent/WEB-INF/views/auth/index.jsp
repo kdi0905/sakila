@@ -8,6 +8,6 @@
 </head>
 <body>
 	<h1>로그인성공</h1>
-	<jsp:include page="/WEB-INF/views/inc/menu.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/views/auth/inc/menu.jsp"></jsp:include>
 </body>
 </html>
