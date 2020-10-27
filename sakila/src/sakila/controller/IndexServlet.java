@@ -17,10 +17,5 @@ public class IndexServlet extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/views/auth/index.jsp").forward(request, response);
 		
 	}
-	
-	//로그인 액션
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-	}
 
 }

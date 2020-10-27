@@ -13,7 +13,7 @@
 }
 .hr{
 	background-color: #A6A6A6
-}
+} 
 </style>
 <nav class="navbar menuBg ">
 	<ul class="navbar-nav">
@@ -25,7 +25,7 @@
 							Movie</a></td>
 				</tr>
 				<tr>
-					<td rowspan="2"><a href=""><img width="80px" height="80px"
+					<td rowspan="2"><a href="${pageContext.request.contextPath}/auth/StaffServlet"><img width="80px" height="80px"
 						src="${pageContext.request.contextPath }/images/login.PNG"></a>
 					</td>
 					<td class="text-right">서울지점</td>
