@@ -9,11 +9,11 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-	<h1>로그인성공</h1>
-	<div class="container">
+	
+
 	<div class="row">
 	<jsp:include page="/WEB-INF/views/auth/inc/menu.jsp"></jsp:include>
 	</div>
-	</div>
+	
 </body>
 </html>
