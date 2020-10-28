@@ -62,6 +62,7 @@ public class StaffService {
 			conn.setAutoCommit(false);
 			
 			returnsacc= staffDao.selectStaffOneListById(conn, staff);
+			System.out.println(returnsacc);
 			conn.commit();
 		}catch(Exception e) {
 			try {
@@ -77,6 +78,7 @@ public class StaffService {
 				e.printStackTrace();
 			}
 		}
+		System.out.println("StaffService 종료!!");
 		return returnsacc;
 	}
 }

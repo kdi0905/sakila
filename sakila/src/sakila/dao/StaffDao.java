@@ -39,7 +39,9 @@ public class StaffDao {
 		System.out.println();
 		System.out.println("StaffDao : selectStaffByKey시작");
 		StaffAndAddressAndCityAndCountry sacc = null;
+		System.out.println("StaffDao: "+staff.getStaffId() +" --->staffid확인");
 		PreparedStatement stmt= conn.prepareStatement(StaffQuery.SELECT_STAFFONE_LIST_BY_ID);
+		System.out.println(stmt);
 		stmt.setInt(1, staff.getStaffId());
 		ResultSet rs = stmt.executeQuery();
 		if(rs.next()) {
