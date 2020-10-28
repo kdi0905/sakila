@@ -51,14 +51,14 @@
 				</tr>
 				<tr>
 					<td>
-						<a class ="text-dark" href="">영화 반납</a>
+						<a class ="text-dark" href="${pageContext.request.contextPath}/auth/FilmReturnServlet">영화 반납</a>
 						<hr style="height:2px;"class="hr">
 						<div class="nav flex-column">
-						<a class ="text-dark" href="">회원목록 관리</a>
-						<a class ="text-dark" href="">영화목록 관리</a>
-						<a class ="text-dark" href="">영화재고 관리</a>
-						<a class ="text-dark" href="">영화배우 관리</a>
-						<a class ="text-dark" href="">영화 출연 배우 등록 관리</a>
+						<a class ="text-dark" href="${pageContext.request.contextPath}/auth/CustomerListServlet">회원목록 관리</a>
+						<a class ="text-dark" href="${pageContext.request.contextPath}/auth/FilmListServlet">영화목록 관리</a>
+						<a class ="text-dark" href="${pageContext.request.contextPath}/auth/FilmInventoryServlet">영화재고 관리</a>
+						<a class ="text-dark" href="${pageContext.request.contextPath}/auth/ActorListServlet">영화배우 관리</a>
+						<a class ="text-dark" href="${pageContext.request.contextPath}/auth/FilmAddActorServlet">영화 출연 배우 등록 관리</a>
 						</div>
 						<hr style="height:2px;"class="hr">
 						<div class="nav flex-column">
