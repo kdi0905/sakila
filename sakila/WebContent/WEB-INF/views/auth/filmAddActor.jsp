@@ -42,7 +42,7 @@ body{
 			<div style=" margin-top: 70px; margin-left: 30px">
 				
 					<span class="index">영화 출연배우 등록</span>
-					<hr style="min-width:700px; height: 2px;" class="hr">
+					<hr style="min-width:800px; height: 2px;" class="hr">
 					
 				
 			</div>

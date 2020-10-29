@@ -8,8 +8,8 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
+import sakila.commons.DBUtil;
 import sakila.dao.StatsDao;
-import sakila.dbUtil.DBUtil;
 import sakila.vo.Stats;
 
 

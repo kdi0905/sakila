@@ -44,7 +44,7 @@
 			<div style=" margin-top: 70px; margin-left: 30px">
 				
 					<span class="index">Index</span>
-					<hr style="min-width:700px; height: 2px;" class="hr">
+					<hr style="min-width:800px; height: 2px;" class="hr">
 					<span>sakila비디오 대여점 프로젝트</span>
 				
 			</div>

@@ -3,8 +3,8 @@ package sakila.service;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import sakila.commons.DBUtil;
 import sakila.dao.StaffDao;
-import sakila.dbUtil.DBUtil;
 import sakila.vo.*;
 
 public class StaffService {

@@ -17,14 +17,15 @@ import sakila.vo.*;
 @WebServlet("/auth/StaffServlet")
 public class StaffServlet extends HttpServlet {
 
-       
+       private StaffService staffservice;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("StaffServlet 접속 성공");
 		HttpSession session = request.getSession(); //session 값 가져오기
 		Staff staff =(Staff)session.getAttribute("loginStaff");
 		System.out.println("StaffServlet : "+staff+" sessiont에서 가져온 staff 내용확인");
-		StaffService staffservice =new StaffService();
+		staffservice=new StaffService();
+		
 		StaffAndAddressAndCityAndCountry sacc=staffservice.getStaffOneListById(staff);
 		System.out.println("StaffServlet 2번째 접속 성공 ");
 		System.out.println("StaffServlet sacc  검사 :"+ sacc);
