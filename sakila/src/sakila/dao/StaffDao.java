@@ -2,8 +2,7 @@ package sakila.dao;
 
 import java.sql.*;
 import sakila.Query.StaffQuery;
-import sakila.vo.Staff;
-import sakila.vo.StaffAndAddressAndCityAndCountry;
+import sakila.vo.*;
 
 public class StaffDao {
 	//이메일,비밀번호 있는지 확인
@@ -41,30 +40,39 @@ public class StaffDao {
 		StaffAndAddressAndCityAndCountry sacc = null;
 		System.out.println("StaffDao: "+staff.getStaffId() +" --->staffid확인");
 		PreparedStatement stmt= conn.prepareStatement(StaffQuery.SELECT_STAFFONE_LIST_BY_ID);
-		System.out.println(stmt);
 		stmt.setInt(1, staff.getStaffId());
+		System.out.println(stmt);
 		ResultSet rs = stmt.executeQuery();
 		if(rs.next()) {
 			sacc = new StaffAndAddressAndCityAndCountry();
+			sacc.staff = new Staff();
+			sacc.address = new Address();
+			sacc.city = new City();
+			sacc.country = new Country();
+			
 			sacc.staff.setUsername(rs.getString("s.username"));
-			System.out.println("StaffDao의 staff username : "+sacc.staff.getUsername());
+			System.out.println("StaffDao의 Staff username : "+sacc.staff.getUsername());
 			sacc.staff.setAddressId(rs.getInt("s.address_id"));
-			System.out.println("StaffDao의 staff address_id : "+sacc.staff.getAddressId());
+			System.out.println("StaffDao의 Staff address_id : "+sacc.staff.getAddressId());
 			sacc.staff.setEmail(rs.getString("s.email"));
-			System.out.println("StaffDao의 staff email : "+sacc.staff.getEmail());
+			System.out.println("StaffDao의 Staff email : "+sacc.staff.getEmail());
 			sacc.staff.setPicture(rs.getString("s.picture"));
-			System.out.println("StaffDao의 staff picture : "+sacc.staff.getPicture());
+			System.out.println("StaffDao의 Staff picture : "+sacc.staff.getPicture());
+			sacc.staff.setFirstName(rs.getString("s.first_name"));
+			System.out.println("StaffDao의 Staff firstName : "+sacc.staff.getFirstName());
+			sacc.staff.setLastName(rs.getString("s.last_name"));
+			System.out.println("StaffDao의 Staff lastName : "+sacc.staff.getLastName());
 			
 			sacc.address.setAddress(rs.getString("si.address"));
-			System.out.println("StaffDao의 address Address : "+sacc.address.getAddress());
+			System.out.println("StaffDao의 Address address : "+sacc.address.getAddress());
 			sacc.address.setPhone(rs.getString("si.phone"));
-			System.out.println("StaffDao의 address phone : "+sacc.address.getPhone());
+			System.out.println("StaffDao의 Address phone : "+sacc.address.getPhone());
 			
 			sacc.city.setCity(rs.getString("si.city"));
-			System.out.println("StaffDao의 city city : "+sacc.city.getCity());
+			System.out.println("StaffDao의 City city : "+sacc.city.getCity());
 			
-			sacc.coutry.setCountry(rs.getString("si.country"));
-			System.out.println("StaffDao의 coutry country : "+sacc.coutry.getCountry());
+			sacc.country.setCountry(rs.getString("si.country"));
+			System.out.println("StaffDao의 Country country : "+sacc.country.getCountry());
 		}
 		return sacc;
 	}

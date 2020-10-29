@@ -25,7 +25,19 @@ public class StaffServlet extends HttpServlet {
 		Staff staff =(Staff)session.getAttribute("loginStaff");
 		System.out.println("StaffServlet : "+staff+" sessiont에서 가져온 staff 내용확인");
 		StaffService staffservice =new StaffService();
-		staffservice.getStaffOneListById(staff);
+		StaffAndAddressAndCityAndCountry sacc=staffservice.getStaffOneListById(staff);
+		System.out.println("StaffServlet 2번째 접속 성공 ");
+		System.out.println("StaffServlet sacc  검사 :"+ sacc);
+		request.setAttribute("username", sacc.staff.getUsername());
+		request.setAttribute("firstName", sacc.staff.getFirstName());
+		request.setAttribute("lastName", sacc.staff.getLastName());
+		request.setAttribute("email",sacc.staff.getEmail());
+		request.setAttribute("picture", sacc.staff.getPicture());
+		request.setAttribute("address",sacc.address.getAddress());
+		request.setAttribute("phone", sacc.address.getPhone());
+		request.setAttribute("city", sacc.city.getCity());
+		request.setAttribute("country", sacc.country.getCountry());
+		
 		request.getRequestDispatcher("/WEB-INF/views/auth/staff.jsp").forward(request, response);
 	}
 

@@ -55,29 +55,29 @@ body {
 						<table class="table table-borderless"  style="width: 300px; float:left;">
 							<tr>
 								<td>별명</td>
-								<td></td>
+								<td>${username}</td>
 							</tr>
 							<tr>
 								<td>이름</td>
-								<td></td>
+								<td>${firstName}&nbsp;${lastName}</td>
 							</tr>
 							<tr>
 								<td>연락처</td>
-								<td></td>
+								<td>${phone }</td>
 							</tr>
 							<tr>
 								<td>주소</td>
-								<td></td>
+								<td>${address }</td>
 							</tr>
 							<tr>
 								<td>E-mail</td>
-								<td></td>
+								<td>${email }</td>
 							</tr>
 						</table>
 					</div>
 						<div class="col">
 						<div class="imgBg" style="float:right;">
-						<img width="150px" height="200px"  src="${pageContext.request.contextPath}/images/login.PNG">
+						<img width="150px" height="200px"  src="${pageContext.request.contextPath}/images/${picture}">
 						<!-- 수정 -->
 						</div>
 					</div>
