@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,12 +36,7 @@ body{
 </script>
 <script>
 	$(document).ready(function () {
-		$(list).each(function(index, item) {
-			$('#customerList').append('<tr>');
-			$('#customerList').append('<td>뭐라도나오겠지</td>');
-			//	$('#customerList').append('<td>'+${item.customerId}+'</td>');
-			$('#customerList').append('</tr>');
-		});
+		
 	});
 </script>
 </head>
@@ -79,7 +75,22 @@ body{
 								<th>연체여부</th>
 							</tr>
 						</thead>
-						<tbody id="customerList">
+						<tbody >
+						
+							<c:forEach var="c" items="${list}">
+								<tr>
+								<td>${c.customerId}</td>
+								<td>${c.firstName }&nbsp;${c.lastName }</td>
+								<td>${c.phone}</td>
+								<c:if test="${c.active=='1'}">
+									<td>활성화</td>
+								</c:if>
+								<c:if test="${c.active=='0'}">
+									<td>비 활성화</td>
+								</c:if>
+								</tr>
+							</c:forEach>
+							
 					 </tbody>
 					</table>
 					</div>

@@ -12,6 +12,7 @@ import sakila.vo.Customer;
 import sakila.vo.CustomerAndAddress;
 	
 public class CustomerDao {
+	//고객 리스트 출력
 	public List<CustomerAndAddress> selectCustomerList(Connection conn,final int BEGIN_ROW,final int ROW_PER_PAGE)throws Exception {
 		System.out.println("CustomerDao 접속성공 고객리스트 확인");
 		List<CustomerAndAddress> list = new ArrayList<CustomerAndAddress>(); 
@@ -22,13 +23,13 @@ public class CustomerDao {
 		ResultSet rs = stmt.executeQuery();
 		while(rs.next()) {
 			CustomerAndAddress ca= new CustomerAndAddress();
-			ca.customer = new Customer();
-			ca.address = new Address();
-			ca.customer.setCustomerId(rs.getInt("c.customer_id"));
-			ca.customer.setFirstName(rs.getString("c.first_name"));
-			ca.customer.setFirstName(rs.getString("c.last_name"));
-			ca.customer.setActive(rs.getInt("c.active"));
-			ca.address.setAddress(rs.getString("a.address"));
+			
+			ca.setCustomerId(rs.getInt("c.customer_id"));
+			ca.setFirstName(rs.getString("c.first_name"));
+			ca.setLastName(rs.getString("c.last_name"));
+			ca.setActive(rs.getInt("c.active"));
+			ca.setAddress(rs.getString("a.address"));
+			ca.setPhone(rs.getString("a.phone"));
 			list.add(ca);
 		}
 		rs.close();
@@ -36,4 +37,6 @@ public class CustomerDao {
 		System.out.println("CustomerDao종료!!!");
 		return list;
 	}
+	
+	
 }
