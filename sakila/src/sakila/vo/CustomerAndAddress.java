@@ -9,6 +9,7 @@ public class CustomerAndAddress {
 	private int active;
 	private String address;
 	private String phone;
+	private String check;
 	public String getPhone() {
 		return phone;
 	}
@@ -45,10 +46,17 @@ public class CustomerAndAddress {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	
+	public String getCheck() {
+		return check;
+	}
+	public void setCheck(String check) {
+		this.check = check;
+	}
 	@Override
 	public String toString() {
 		return "CustomerAndAddress [customerId=" + customerId + ", FirstName=" + FirstName + ", LastName=" + LastName
-				+ ", active=" + active + ", address=" + address + "]";
+				+ ", active=" + active + ", address=" + address + ", phone=" + phone + ", check=" + check + "]";
 	}
 	
 	

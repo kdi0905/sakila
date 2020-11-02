@@ -88,6 +88,7 @@ body{
 								<c:if test="${c.active=='0'}">
 									<td>비 활성화</td>
 								</c:if>
+								<td>${c.check}</td>
 								</tr>
 							</c:forEach>
 							
