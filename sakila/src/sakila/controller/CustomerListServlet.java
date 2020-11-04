@@ -31,14 +31,19 @@ public class CustomerListServlet extends HttpServlet {
 		List<CustomerList> list = customerService.getselectCustomerList(currentPage, rowPerPage);
 		
 		//service에서 실행한 메서드를 가져와 list안에 넣는다
-		
-		
+		// 페이징 
+		//총 개수 구하기
+		int totalCount = customerService.getCustomerListCount();
+		int lastPage= (totalCount/rowPerPage)+1;
+		System.out.println("lastPage : "+lastPage);
+		System.out.println("currentPage : "+currentPage);
 		System.out.println("CustomerServlet 2번째 접속 성공");
 		System.out.println("CustomerServlet에서 배열 list size 보기:"+list.size());
 		
 		request.setAttribute("list", list);
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("rowPerPage", rowPerPage);
+		request.setAttribute("lastPage", lastPage);
 		request.getRequestDispatcher("/WEB-INF/views/auth/customerList.jsp").forward(request, response);
 	}
 

@@ -48,5 +48,39 @@ public class CustomerService {
 		System.out.println("CustomerService 종료!!");
 		return list;
 	}
+	//고객리스트 개수확인
+	public int getCustomerListCount() {
+	
+		System.out.println("CustomerService 시작!!");
+		int totalCount =0;
+		
+		Connection conn =null;
+		try {
+			customerDao= new CustomerDao();
+			DBUtil dbUtil = new DBUtil();
+			conn= dbUtil.selectDB();
+			conn.setAutoCommit(false);
+			
+			totalCount = customerDao.selectCustomerListCount(conn);
+			System.out.println("CustomerListCount 고객리스트 개수 확인: "+totalCount);
+			conn.commit();
+		}catch (Exception e) {
+			try {
+				conn.rollback();
+			}catch(SQLException e1){
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		}finally {
+			try {
+				conn.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		System.out.println("CustomerService 종료!!");	
+		
+		return totalCount;
+	}
 }
 

@@ -101,18 +101,32 @@ body {
 						</tbody>
 					</table>
 				</div>
-				<table>
-				<tr>
-					<td><a href="${pageContext.request.contextPath}/auth/CustomerListServlet?currentPage=1"><<</a></td>
-					<c:if test="${currentPage!=1}">
-					<td><a href="${pageContext.request.contextPath}/auth/CustomerListServlet?currentPage=${currentPage-1}"><</a></td>
+				<div style="width:200px; margin: 0 auto;">
+					<table class="table" style="width: 200px; text-align: center;">
+						<tr>
+						<c:if test="${currentPage!=1}">
+						<td><a href="${pageContext.request.contextPath}/auth/CustomerListServlet?currentPage=1"> << </a></td>
+						<td><a href="${pageContext.request.contextPath}/auth/CustomerListServlet?currentPage=${currentPage-1}"> < </a></td>
+						</c:if>
+						
+						<c:if test="${currentPage==1 }">
+						<td> << </td>
+						<td> < </td>
+						</c:if>
+						
+						<c:if test="${currentPage!=lastPage}">
+						<td><a href="${pageContext.request.contextPath}/auth/CustomerListServlet?currentPage=${currentPage+1}"> > </a></td>
+						<td><a href="${pageContext.request.contextPath}/auth/CustomerListServlet?currentPage=${lastPage}"> >> </a></td>
+						</c:if>
+						
+							<c:if test="${currentPage==lastPage }">
+						<td> > </td>
+						<td> >> </td>
+						</c:if>
+					</tr>
 					
-					</c:if>
-					<td><a href="${pageContext.request.contextPath}/auth/CustomerListServlet?currentPage=${currentPage+1}"><</a></td>
-					<td><a href="${pageContext.request.contextPath}/auth/CustomerListServlet?currentPage="><</a></td>
-				</tr>
-				
-				</table>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>

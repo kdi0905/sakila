@@ -37,6 +37,18 @@ public class CustomerDao {
 		System.out.println("CustomerDao종료!!!");
 		return list;
 	}
+	//고객 리스트 총 개수 출력
+	public int selectCustomerListCount(Connection conn)throws Exception {
+		int count=0;
+		PreparedStatement stmt = conn.prepareStatement(CustomerQuery.SELECT_CUSTOMER_LIST_COUNT);
+		ResultSet rs = stmt.executeQuery();
+		if(rs.next()) {
+			count= rs.getInt("count(*)");
+		}
+		rs.close();
+		stmt.close();
+		return count;
+	}
 	
 	
 }
