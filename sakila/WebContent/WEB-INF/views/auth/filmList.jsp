@@ -11,15 +11,15 @@ body{
               padding:0;
               margin:0;
 
-              width: 1300px; //가로 폭
-              height: 100%; // 세로폭
-              overflow: hidden; // 범위를 넘엇을시 넘는 영역 숨김
-              background-position: 0 0; // 시작위치
-              background-repeat: no-repeat; // 배경화면 반복
-              background-attachment: fixed; // 배경화면 스크롤시 고정
-              background-size: cover; // 배경화면 비율유지
-              position: relative; // 위치지정
-              overflow-y: auto; //스크롤
+              width: 1300px;
+              height: 100%;
+              overflow: hidden; 
+              background-position: 0 0; 
+              background-repeat: no-repeat; 
+              background-attachment: fixed; 
+              background-size: cover; 
+              position: relative;
+              overflow-y: auto; 
           }
 
 .index {
@@ -82,6 +82,42 @@ body{
 					 </tbody>
 					</table>
 					</div>
+				<div>
+					<table class="table" style="width: 80%; text-align: center;">
+						<tr>
+						<c:if test="${currentPage>1}">
+						<td><a class="btn btn-light" href="${pageContext.request.contextPath}/auth/FilmListServlet?currentPage=1"> << </a></td>
+						<td><a class="btn btn-light" href="${pageContext.request.contextPath}/auth/FilmListServlet?currentPage=${currentPage-1}"> < </a></td>
+						</c:if>
+						
+						<c:if test="${currentPage==1 }">
+							<td class=" text-secondary"style="font-size: 20px"> << </td>
+							<td class=" text-secondary"style="font-size: 20px"> < </td>
+						</c:if>
+						<c:forEach var="sp" begin="${firstShow}" end="${lastShow}">
+							<c:if test="${sp<=lastPage }">
+								<c:if test="${sp!=currentPage}">
+								<td><a class="btn btn-light" href="${pageContext.request.contextPath}/auth/FilmListServlet?currentPage=${sp}">${sp}</a></td>
+								</c:if>
+								<c:if test="${sp==currentPage}">
+								<td class=" text-secondary"style="font-size: 20px">${sp}</td>
+								</c:if>
+							</c:if>
+					
+						</c:forEach>
+						<c:if test="${currentPage<lastPage}">
+						<td><a class="btn btn-light" href="${pageContext.request.contextPath}/auth/FilmListServlet?currentPage=${currentPage+1}"> > </a></td>
+						<td><a class="btn btn-light" href="${pageContext.request.contextPath}/auth/FilmListServlet?currentPage=${lastPage}"> >> </a></td>
+						</c:if>
+						
+							<c:if test="${currentPage==lastPage }">
+						<td class=" text-secondary"style="font-size: 20px"> > </td>
+						<td class=" text-secondary"style="font-size: 20px"> >> </td>
+						</c:if>
+					</tr>
+					
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>

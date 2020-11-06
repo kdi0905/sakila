@@ -10,15 +10,15 @@
 body {
 	padding: 0;
 	margin: 0;
-	width: 1300px; // 가로 폭 height : 100%; //
-	세로폭 overflow: hidden; // 범위를 넘엇을시 넘는 영역 숨김 background-position : 0 0;
-	//
-	시작위치 background-repeat: no-repeat; // 배경화면 반복 background-attachment :
-	fixed; // 배경화면 스크롤시 고정 background-size : cover; // 배경화면 비율유지 position :
-	relative; //
-	위치지정 overflow-y: auto;
-	//
-	스크롤
+	width: 1300px; 
+	height : 100%; 
+	overflow: hidden;
+	background-position : 0 0;
+	background-repeat: no-repeat;
+	background-attachment :	fixed; 
+	background-size : cover;
+	position :relative;
+	overflow-y: auto;
 }
 
 .index {
@@ -57,7 +57,7 @@ body {
 			<div style="margin-top: 70px; margin-left: 30px">
 
 				<span class="index">회원 목록</span>
-				<hr style="min-width: 800px; height: 2px;" class="hr">
+				<hr style=" height: 2px;" class="hr">
 
 				<a class="btn btn-secondary" style="float: left" href="">신규 회원
 					등록</a>
@@ -73,7 +73,7 @@ body {
 					</form>
 				</div>
 				<div style="margin-top: 30px">
-					<table class="table" style="width: 800px; text-align: center;">
+					<table class="table" style=" text-align: center;">
 						<thead>
 							<tr>
 								<th>순번</th>
@@ -101,27 +101,37 @@ body {
 						</tbody>
 					</table>
 				</div>
-				<div style="width:200px; margin: 0 auto;">
-					<table class="table" style="width: 200px; text-align: center;">
+				<div>
+					<table class="table" style="width: 80%; text-align: center;">
 						<tr>
-						<c:if test="${currentPage!=1}">
-						<td><a href="${pageContext.request.contextPath}/auth/CustomerListServlet?currentPage=1"> << </a></td>
-						<td><a href="${pageContext.request.contextPath}/auth/CustomerListServlet?currentPage=${currentPage-1}"> < </a></td>
+						<c:if test="${currentPage>1}">
+						<td><a class="btn btn-light" href="${pageContext.request.contextPath}/auth/CustomerListServlet?currentPage=1"> << </a></td>
+						<td><a class="btn btn-light" href="${pageContext.request.contextPath}/auth/CustomerListServlet?currentPage=${currentPage-1}"> < </a></td>
 						</c:if>
 						
 						<c:if test="${currentPage==1 }">
-						<td> << </td>
-						<td> < </td>
+							<td class=" text-secondary"style="font-size: 20px"> << </td>
+							<td class=" text-secondary"style="font-size: 20px"> < </td>
 						</c:if>
-						
-						<c:if test="${currentPage!=lastPage}">
-						<td><a href="${pageContext.request.contextPath}/auth/CustomerListServlet?currentPage=${currentPage+1}"> > </a></td>
-						<td><a href="${pageContext.request.contextPath}/auth/CustomerListServlet?currentPage=${lastPage}"> >> </a></td>
+						<c:forEach var="sp" begin="${firstShow}" end="${lastShow}">
+							<c:if test="${sp<=lastPage }">
+								<c:if test="${sp!=currentPage}">
+								<td><a class="btn btn-light" href="${pageContext.request.contextPath}/auth/CustomerListServlet?currentPage=${sp}">${sp}</a></td>
+								</c:if>
+								<c:if test="${sp==currentPage}">
+								<td class=" text-secondary"style="font-size: 20px">${sp}</td>
+								</c:if>
+							</c:if>
+					
+						</c:forEach>
+						<c:if test="${currentPage<lastPage}">
+						<td><a class="btn btn-light" href="${pageContext.request.contextPath}/auth/CustomerListServlet?currentPage=${currentPage+1}"> > </a></td>
+						<td><a class="btn btn-light" href="${pageContext.request.contextPath}/auth/CustomerListServlet?currentPage=${lastPage}"> >> </a></td>
 						</c:if>
 						
 							<c:if test="${currentPage==lastPage }">
-						<td> > </td>
-						<td> >> </td>
+						<td class=" text-secondary"style="font-size: 20px"> > </td>
+						<td class=" text-secondary"style="font-size: 20px"> >> </td>
 						</c:if>
 					</tr>
 					

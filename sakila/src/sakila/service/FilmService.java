@@ -75,4 +75,56 @@ public class FilmService {
 		System.out.println("FilmService 접속종료");
 		return list;
 	}
+	public int getFilmListCount() {
+		System.out.println("FilmService 접속성공");
+		Connection conn = null;
+		int count=0;
+		try {
+			DBUtil dbUtil = new DBUtil();
+			conn=dbUtil.selectDB();
+			conn.setAutoCommit(false);
+			count =filmDao.selectFilmListCount(conn); 
+			conn.commit();
+		} catch (Exception e) {
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		}finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
+	}
+	public int getFilmInventoryCount() {
+		System.out.println("FilmService 접속성공");
+		Connection conn = null;
+		int count=0;
+		try {
+			DBUtil dbUtil = new DBUtil();
+			conn=dbUtil.selectDB();
+			conn.setAutoCommit(false);
+			count =filmDao.selectFilmInventoryCount(conn); 
+			conn.commit();
+		} catch (Exception e) {
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		}finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
+	}
 }

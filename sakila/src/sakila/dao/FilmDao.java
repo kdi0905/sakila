@@ -63,4 +63,30 @@ public class FilmDao {
 		System.out.println("FilmDao 접속종료");
 		return list;
 	}
+	
+	public int selectFilmListCount(Connection conn)throws Exception {
+		System.out.println("FilmDao 접속성공");
+		PreparedStatement stmt = conn.prepareStatement(FilmQuery.SELECT_FILM_LIST_COUNT);
+		ResultSet rs = stmt.executeQuery();
+		int count = 0;
+		if(rs.next()) {
+			count = rs.getInt("count(*)");
+		}
+		rs.close();
+		stmt.close();
+		return count;
+	}
+
+	public int selectFilmInventoryCount(Connection conn)throws Exception {
+		System.out.println("FilmDao 접속성공");
+		PreparedStatement stmt = conn.prepareStatement(FilmQuery.SELECT_FILM_INVENTORY_COUNT);
+		ResultSet rs = stmt.executeQuery();
+		int count = 0;
+		if(rs.next()) {
+			count = rs.getInt("count(*)");
+		}
+		rs.close();
+		stmt.close();
+		return count;
+	}
 }

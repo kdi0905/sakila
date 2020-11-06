@@ -35,11 +35,22 @@ public class CustomerListServlet extends HttpServlet {
 		//총 개수 구하기
 		int totalCount = customerService.getCustomerListCount();
 		int lastPage= (totalCount/rowPerPage)+1;
+		int showPage=10; 
+		int firstShow= currentPage-((currentPage)%showPage)+1;
+		if((currentPage%showPage)==0) {
+			firstShow= currentPage-((currentPage-1)%showPage);
+			
+		}
+		
+		int lastShow = firstShow+showPage-1;
 		System.out.println("lastPage : "+lastPage);
 		System.out.println("currentPage : "+currentPage);
 		System.out.println("CustomerServlet 2번째 접속 성공");
 		System.out.println("CustomerServlet에서 배열 list size 보기:"+list.size());
-		
+		System.out.println("firstShow : "+firstShow);
+		System.out.println("lastShow : "+lastShow);
+		request.setAttribute("firstShow", firstShow);
+		request.setAttribute("lastShow", lastShow);
 		request.setAttribute("list", list);
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("rowPerPage", rowPerPage);

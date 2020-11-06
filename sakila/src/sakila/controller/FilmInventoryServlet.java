@@ -18,16 +18,38 @@ public class FilmInventoryServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("FilmInvetoryServlet 접속 성공");
+	
 		int currentPage =1;
-		if(request.getAttribute("currentPage")!=null) {
+		if(request.getParameter("currentPage")!=null) {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
 		int rowPerPage=10;
-		if(request.getAttribute("rowPerPage")!=null) {
-			currentPage = Integer.parseInt(request.getParameter("rowPerPage"));
+		if(request.getParameter("rowPerPage")!=null) {
+			rowPerPage = Integer.parseInt(request.getParameter("rowPerPage"));
 		}
 		FilmService filmService = new FilmService();
 		List<FilmList> filmList = filmService.getFilmInventoryList(currentPage, rowPerPage);
+		
+		int totalCount = filmService.getFilmInventoryCount();
+		int lastPage= (totalCount/rowPerPage)+1;
+		int showPage=10; 
+		int firstShow= currentPage-((currentPage)%showPage)+1;
+		if((currentPage%showPage)==0) {
+			firstShow= currentPage-((currentPage-1)%showPage);
+			
+		}
+		int lastShow = firstShow+showPage-1;
+		System.out.println("lastPage : "+lastPage);
+		System.out.println("currentPage : "+currentPage);
+	
+		System.out.println("firstShow : "+firstShow);
+		System.out.println("lastShow : "+lastShow);
+		request.setAttribute("firstShow", firstShow);
+		request.setAttribute("lastShow", lastShow);
+	
+		request.setAttribute("currentPage", currentPage);
+		request.setAttribute("rowPerPage", rowPerPage);
+		request.setAttribute("lastPage", lastPage);
 		
 		request.setAttribute("filmList", filmList);
 		request.getRequestDispatcher("/WEB-INF/views/auth/filmInventory.jsp").forward(request, response);

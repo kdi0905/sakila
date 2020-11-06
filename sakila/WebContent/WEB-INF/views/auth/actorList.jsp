@@ -10,15 +10,15 @@ body{
               padding:0;
               margin:0;
 
-              width: 1300px; //가로 폭
-              height: 100%; // 세로폭
-              overflow: hidden; // 범위를 넘엇을시 넘는 영역 숨김
-              background-position: 0 0; // 시작위치
-              background-repeat: no-repeat; // 배경화면 반복
-              background-attachment: fixed; // 배경화면 스크롤시 고정
-              background-size: cover; // 배경화면 비율유지
-              position: relative; // 위치지정
-              overflow-y: auto; //스크롤
+              width: 1300px;
+              height: 100%; 
+              overflow: hidden;
+              background-position: 0 0; 
+              background-repeat: no-repeat;
+              background-attachment: fixed; 
+              background-size: cover;
+              position: relative;
+              overflow-y: auto;
           }
 
 .index {
@@ -43,8 +43,29 @@ body{
 				
 					<span class="index">영화 배우 관리</span>
 					<hr style="min-width:800px; height: 2px;" class="hr">
+						<a class="btn btn-secondary" style="float: left" href="">신규 배우	등록</a>
+				<div style="float: right">
+					<form method="post" action="">
+					<input type="text" placeholder="배우 이름 검색" style="width:300px; height:40px;">
+					<button type="button" id="btn" class="btn btn-secondary" >검색</button>
+					</form>
+					</div>
 					
-				
+					<div style="margin-top: 40px">
+					<table class="table" style="width: 800px; text-align: center;">
+						<thead>
+							<tr>
+								<th>번호</th>
+								<th>배우 성</th>
+								<th>배우 이름</th>				
+							</tr>
+						</thead>
+						<tbody >
+								
+					 </tbody>
+					</table>
+					</div>
+			</div>
 			</div>
 		</div>
 	</div>
